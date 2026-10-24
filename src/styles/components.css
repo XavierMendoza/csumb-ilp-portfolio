@@ -142,3 +142,4 @@
 .artifact-links { padding-left: 22px; margin-bottom: 0; }
 .artifact-links li { margin-block: 9px; }
 .artifact-links a, .code-evidence > a { overflow-wrap: anywhere; }
+.file-status:not(:empty) { display: block; margin-block: 8px; font-size: .85rem; overflow-wrap: anywhere; }

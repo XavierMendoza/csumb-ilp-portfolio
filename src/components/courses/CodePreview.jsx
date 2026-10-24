@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import FileDownload from './FileDownload'
+import { fetchEvidenceFile } from '../../utils/evidenceFiles'
 
 function SourceText({ url, language }) {
   const [result, setResult] = useState({ status: 'loading', text: '' })
@@ -7,15 +9,7 @@ function SourceText({ url, language }) {
     const controller = new AbortController()
     async function loadSource() {
       try {
-        const response = await fetch(url, { signal: controller.signal })
-        // A development server may return its HTML fallback for a missing asset.
-        if (!response.ok || response.headers.get('content-type')?.includes('text/html')) {
-          throw new Error('Source file unavailable')
-        }
-        const text = await response.text()
-        if (!text.trim() || /^\s*(<!doctype html|<html)/i.test(text)) {
-          throw new Error('Source file unavailable')
-        }
+        const { text } = await fetchEvidenceFile(url, controller.signal)
         setResult({ status: 'ready', text })
       } catch (error) {
         if (error.name !== 'AbortError') setResult({ status: 'error', text: '' })
@@ -37,6 +31,6 @@ export default function CodePreview({ url, language }) {
       <summary>View Code · {language}</summary>
       {open && <SourceText key={url} url={url} language={language} />}
     </details>
-    <a className="text-link" href={url} download>Download Code · {language}</a>
+    <FileDownload className="text-link" url={url}>Download Code · {language}</FileDownload>
   </div>
 }

@@ -1,4 +1,5 @@
 import CodePreview from './CodePreview'
+import FileDownload from './FileDownload'
 
 // Restrict content URLs to web addresses or root-relative local assets.
 function validUrl(url) {
@@ -20,7 +21,7 @@ export default function EvidenceSection({ course }) {
       {item.type === 'code' && <>
         <p className="source-note">Language: {item.language} · Technique: {item.technique}</p>
         <CodePreview url={item.url} language={item.language} />
-        {item.attachments?.length > 0 && <ul className="artifact-links">{item.attachments.filter(file => file.title && validUrl(file.url)).map(file => <li key={file.url}><a href={file.url}>{file.title}</a></li>)}</ul>}
+        {item.attachments?.length > 0 && <ul className="artifact-links">{item.attachments.filter(file => file.title && validUrl(file.url)).map(file => <li key={file.url}><FileDownload url={file.url}>{file.title}</FileDownload></li>)}</ul>}
       </>}
       {item.type === 'reflection' && <div className="reflection">{item.content}</div>}
       {item.type === 'image' && <a href={item.url}><img loading="lazy" src={item.url} alt={item.alt || item.description || item.title} /></a>}
