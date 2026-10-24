@@ -6,6 +6,6 @@ export default function Projects() {
       {project.screenshot?.url && <img src={project.screenshot.url} alt={project.screenshot.alt || `${project.name} application screenshot`} loading="lazy" />}
       <h2>{project.name}</h2><p>{project.description}</p><div className="tags light-tags">{project.technologies?.map(technology => <span key={technology}>{technology}</span>)}</div>
       <div className="actions">{project.githubUrl && <a href={project.githubUrl}>GitHub repository ↗</a>}{project.liveUrl && <a href={project.liveUrl}>Live application ↗</a>}</div>
-    </article>)}</div> : <div className="empty-state project-empty"><span className="empty-symbol" aria-hidden="true">&lt;/&gt;</span><h2>More to build. More to share.</h2><p>Verified technical projects will be added here with descriptions, technologies, and links. In the meantime, explore the courses that form my academic foundation.</p><Link className="button button-primary" to="/courses">Explore My Courses <span aria-hidden="true">→</span></Link></div>}
+    </article>)}</div> : <div className="empty-state project-empty"><span className="empty-symbol" aria-hidden="true">&lt;/&gt;</span><h2>Applied learning in Computer Science.</h2><p>Explore selected coursework in cybersecurity, algorithms, and software engineering, including source code and explanations of the methods behind the work.</p><Link className="button button-primary" to="/courses">Explore My Courses <span aria-hidden="true">→</span></Link></div>}
   </div>
 }

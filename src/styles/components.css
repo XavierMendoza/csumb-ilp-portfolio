@@ -179,7 +179,6 @@
 .evidence-item { border-radius: 12px; box-shadow: 0 6px 24px #101b3505; }
 .evidence-code { border-top: 4px solid #06b6d4; }
 .evidence-reflection { border-top: 4px solid #6366f1; background: linear-gradient(#f8faff, #fff 200px); }
-.draft-notice { color: #713f12; background: #fffbeb; border-left: 3px solid #f59e0b; padding: 14px 18px; font-size: .88rem; }
 .evidence-note { padding: 14px 18px; background: #eff6ff; border-left: 3px solid #2563eb; font-size: .9rem; }
 .source-group { margin-block: 24px; }
 .source-group h4 { font-size: 1rem; color: #3730a3; margin-block: 0 12px; }
