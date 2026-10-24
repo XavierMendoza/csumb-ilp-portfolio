@@ -143,3 +143,57 @@
 .artifact-links li { margin-block: 9px; }
 .artifact-links a, .code-evidence > a { overflow-wrap: anywhere; }
 .file-status:not(:empty) { display: block; margin-block: 8px; font-size: .85rem; overflow-wrap: anywhere; }
+
+/* Phase 4: shared color system; decorative accents never intercept controls. */
+.hero { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 85% 20%, #6366f155, transparent 50%), linear-gradient(120deg, #101b35, #173e8c 62%, #373090); }
+.hero::before { content: ''; position: absolute; z-index: -1; pointer-events: none; width: 560px; height: 560px; border: 1px solid #ffffff20; border-radius: 50%; right: -200px; top: -260px; box-shadow: 0 0 0 90px #ffffff05, 0 0 0 180px #ffffff04; }
+.hero h1, .hero-role { color: #fff; }
+.hero h1 span { color: #67e8f9; }
+.hero .eyebrow { color: #bfdbfe; }
+.hero-intro { color: #e0e7ff; }
+.hero .button-primary { background: #fff; color: #173e8c; box-shadow: 0 8px 24px #07142c33; }
+.hero .button-primary:hover { background: #cffafe; }
+.hero .button-secondary { color: #fff; border-color: #a5b4fc; }
+.hero .button-secondary:hover { background: #ffffff15; }
+.hero :focus-visible { outline-color: #fbbf24; }
+.focus-panel { background: #101b35d9; border: 1px solid #8ba9ef55; box-shadow: 0 24px 60px #090f2b40; }
+.orbit { border-color: #6366f1; }
+.orbit-two { border-color: #06b6d4; }
+.focus-graphic i { background: #f59e0b; }
+.monogram { background: linear-gradient(135deg, #2563eb, #4338ca); }
+.primary-nav a.active { background: #eff6ff; color: #1d4ed8; }
+.education-strip { border-top: 3px solid #06b6d4; }
+.outcomes { background: linear-gradient(145deg, #eff6ff, #eef2ff); border-top: 4px solid #6366f1; }
+.goals-section { background: linear-gradient(110deg, #eff6ff, #f5f3ff); }
+.goals-list li::before { background: #fff; border-radius: 6px; padding: 3px 6px; left: -3px; }
+.course-card { border-top: 4px solid #2563eb; border-radius: 12px; box-shadow: 0 4px 18px #101b3506; }
+.course-card:nth-child(4n + 2) { border-top-color: #06b6d4; }
+.course-card:nth-child(4n + 3) { border-top-color: #6366f1; }
+.course-card:nth-child(4n) { border-top-color: #f59e0b; }
+.course-card:hover, .course-card:focus-within { border-inline-color: #93b4f4; box-shadow: 0 10px 28px #1d4ed817; }
+.course-code { background: #eff6ff; color: #1e40af; padding: 5px 9px; border-radius: 6px; }
+.card-meta { align-items: center; }
+.status { font-size: .74rem; line-height: 1.6; }
+.page-header { padding: 28px; border-left: 4px solid #2563eb; border-radius: 0 16px 16px 0; background: linear-gradient(110deg, #eff6ff, #eef2ff 70%, #fff); }
+.page-header h1 { overflow-wrap: anywhere; }
+.evidence-item { border-radius: 12px; box-shadow: 0 6px 24px #101b3505; }
+.evidence-code { border-top: 4px solid #06b6d4; }
+.evidence-reflection { border-top: 4px solid #6366f1; background: linear-gradient(#f8faff, #fff 200px); }
+.draft-notice { color: #713f12; background: #fffbeb; border-left: 3px solid #f59e0b; padding: 14px 18px; font-size: .88rem; }
+.evidence-note { padding: 14px 18px; background: #eff6ff; border-left: 3px solid #2563eb; font-size: .9rem; }
+.source-group { margin-block: 24px; }
+.source-group h4 { font-size: 1rem; color: #3730a3; margin-block: 0 12px; }
+.source-file { padding: 16px; border: 1px solid var(--line); border-radius: 8px; margin-block: 12px; min-width: 0; }
+.source-file h5 { margin: 0; font: 600 .9rem/1.6 ui-monospace, monospace; overflow-wrap: anywhere; }
+.source-file .code-evidence { margin-block: 0; }
+.code-evidence summary { overflow-wrap: anywhere; }
+.education-card { background: linear-gradient(120deg, #eff6ff, #eef2ff); border-left-color: #6366f1; border-radius: 0 12px 12px 0; }
+.light-tags span { border-color: #c7d2fe; background: #eef2ff; color: #3730a3; }
+.contact-panel { border-top: 4px solid #06b6d4; border-radius: 12px; }
+.site-footer { background: #eff6ff; }
+@media (max-width: 520px) {
+  .page-header { padding: 22px 18px; }
+  .evidence-item { padding: 20px 16px; }
+  .source-file { padding: 12px; }
+  .hero .actions { align-items: stretch; flex-direction: column; }
+}

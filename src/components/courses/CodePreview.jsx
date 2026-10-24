@@ -24,13 +24,13 @@ function SourceText({ url, language }) {
   return <pre className="code-preview" tabIndex={0} aria-label={`${language} source code`}><code>{result.text}</code></pre>
 }
 
-export default function CodePreview({ url, language }) {
+export default function CodePreview({ url, language, filename }) {
   const [open, setOpen] = useState(false)
   return <div className="code-evidence">
     <details onToggle={event => setOpen(event.currentTarget.open)}>
-      <summary>View Code · {language}</summary>
+      <summary>View Code · {filename || language}</summary>
       {open && <SourceText key={url} url={url} language={language} />}
     </details>
-    <FileDownload className="text-link" url={url}>Download Code · {language}</FileDownload>
+    <FileDownload className="text-link" url={url}>Download Code · {filename || language}</FileDownload>
   </div>
 }

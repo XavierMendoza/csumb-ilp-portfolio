@@ -2,13 +2,15 @@ import assert from 'node:assert/strict'
 import { Buffer } from 'node:buffer'
 import { readFile } from 'node:fs/promises'
 import { test } from 'node:test'
+import { courses } from '../src/data/courses.js'
 import { fetchEvidenceFile } from '../src/utils/evidenceFiles.js'
 
-test('all six coursework downloads retain their exact bytes', async t => {
-  for (const path of ['cst-315/substitution_analysis.py', 'cst-315/ciphertext.txt', 'cst-315/plaintext.txt', 'cst-315/secret_key.txt', 'cst-370/Main_hw6_1.java', 'cst-370/README.md']) {
-    const bytes = await readFile(`public/documents/courses/${path}`)
+test('all coursework downloads retain their exact bytes', async t => {
+  const paths = courses.flatMap(c => c.evidence.filter(e => e.type === 'code').flatMap(e => e.files ? e.files.map(f => f.url) : [e.url, ...(e.attachments || []).map(f => f.url)]))
+  for (const path of paths) {
+    const bytes = await readFile(`public${path}`)
     t.mock.method(globalThis, 'fetch', async () => new Response(bytes, { headers: { 'Content-Type': 'application/octet-stream' } }))
-    const result = await fetchEvidenceFile(`/documents/courses/${path}`)
+    const result = await fetchEvidenceFile(path)
     assert.deepEqual(Buffer.from(await result.blob.arrayBuffer()), bytes)
     assert.equal(result.text, bytes.toString())
     t.mock.restoreAll()
